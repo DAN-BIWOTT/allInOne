@@ -17,7 +17,7 @@ const CustomForm = () =>
     const[tempId,setTempId] = useState('');
 
     const updatePname = e =>
-    {
+    {   
         setTempPerson(e.target.value);
     }
     const updateBname = e =>

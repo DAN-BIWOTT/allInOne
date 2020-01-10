@@ -8,6 +8,7 @@ const Blockchain = () =>
 {
     const[account,setAccounts] = useState('');
     const[contract,setContract] = useState([]);
+    const[blockData,setBlockData] = useState([]);
 
     let taskCount = 0;
  
@@ -33,30 +34,24 @@ const Blockchain = () =>
         }
         //console.log(objectArray);
        objectArray.map(obj => console.log(obj.content));
+       setBlockData(objectArray);
     }
 
 //////////////////////  Declarables  ///////////////////////////////
     const[val,setVal] = useState('');
-    const[query,setQuery] = useState('');
 //////////////////////   Task Form  //////////////////////////////// 
-    const sendTask = e => 
-    {
-        e.preventDefault();
-        setQuery(val);
-        createTask();
-    }
-
+ 
     const updateVal = e => 
-    {
+    {   console.log(e.target.value);
         setVal(e.target.value);
     }
 /////////////////////  Transaction CRUD ///////////////////////////
 
 ////////Create a Task
     const createTask = () => 
-    {   
+    {   console.log(val);
         getBlockdata();
-        contract.methods.createTask(query).send({ from: account[0] });
+        contract.methods.createTask(val).send({ from: account[0] });
     }
 
     return(
@@ -70,7 +65,7 @@ const Blockchain = () =>
                 <Row>
                     <Col md="4"></Col>
                     <Col md="4">
-                    <form onSubmit={sendTask}>
+                    <form onSubmit={createTask}>
                          <FormControl value={val} onChange={updateVal}></FormControl>
                          <Button color="Success" type="Submit">Create A Task</Button>
                          </form>11
@@ -81,7 +76,7 @@ const Blockchain = () =>
                 <Row>
                     <Col md="6">
                         <ol>
-                        {objectArray.map(obj => <li>{obj.content}</li>)}
+                        {blockData.map(obj => <li key={obj.content.toString()}>{ obj.content}</li>)}
                         </ol>
                     </Col>
                 </Row>
