@@ -1,51 +1,56 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Navigation from './components/Navigation';
-import { Container, Row, Col, Table, Button, ButtonToolbar } from 'react-bootstrap';
-import styled from 'styled-components';
-import { FaTrashAlt } from 'react-icons/fa';
-import { FiEdit } from 'react-icons/fi';
-import CustomForm from './components/fullcrud/CustomForm';
+import { Container, Row, Col } from 'react-bootstrap';
+import SearchForm from './components/fullcrud/SearchForm';
+import FullcrudTable from './components/fullcrud/FullcrudTable';
+import TodayJoke from './components/fullcrud/TodayJoke';
+import Axios from 'axios';
 
-const Space_left = styled.div`
-margin-left: 5px;
-`;
 
 const Fullcrud = () => {
+
+    useEffect(
+        ()=>{getData()},
+        []
+    );
+
+        const[norris,setNorris] = useState([])
+
+    const getData = async () => 
+    {
+        const response = await Axios.get("http://api.icndb.com/jokes/random/12");
+        setNorris(response.data.value);
+        // console.log(await norris)
+    }
+   
     return(
-        <div>
+        <div> 
             <Navigation></Navigation>
             <Container>
+                <Row className="justify-content-md-center">
+                    <h3>CHUCK NORRIS JOKES</h3>
+                </Row>
                 <Row>
                     <Col md="6">
-                    <h3>Add People</h3>
-                    <CustomForm></CustomForm>
+                        {
+                            norris.map( 
+                                obj =>
+                                    <FullcrudTable
+                                            key={obj.id}  
+                                            norrisJokesids={obj.id}
+                                            norrisJokes={obj.joke}
+                                    ></FullcrudTable>
+                             )
+                         }
                     </Col>
                     <Col md="6">
-                    <h3>People</h3>
-                        <Table striped bordered hover>
-                            <thead>
-                                <tr>
-                                    <th>Person Name</th>
-                                    <th>Business Name</th>
-                                    <th>ID Number</th>
-                                    <th></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td>
-                                    <ButtonToolbar className="justify-content-md-center">
-                                        <Button size="sm" variant="danger"><FaTrashAlt/></Button>
-                                        <Space_left></Space_left>
-                                        <Button size="sm" variant="primary"><FiEdit/></Button>
-                                    </ButtonToolbar>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </Table>
+                        <SearchForm></SearchForm>
+                        <TodayJoke></TodayJoke>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col md="12">
+                        
                     </Col>
                 </Row>
             </Container>

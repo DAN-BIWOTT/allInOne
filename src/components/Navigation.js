@@ -11,7 +11,8 @@ const Navigation = () =>
                 <Nav className="mr-auto">
                     <Nav.Link href="/FoodApp">Food App</Nav.Link>
                     <Nav.Link href="/blockchain">Block-Chain</Nav.Link>
-                    <Nav.Link href="/fullcrud">Full-CRUD</Nav.Link>
+                    <Nav.Link href="/fullcrud">Chuck Norris</Nav.Link>
+                    <Nav.Link href="/fullcrudRails">Full-CRUD(RAILS-API+MySql)</Nav.Link>
                 </Nav>
             
             </Navbar.Collapse>

@@ -1,7 +1,7 @@
 import React, { useEffect,useState } from 'react';
 import Web3 from 'web3';
 import Navigation from './components/Navigation';
-import { Container,Row,Col, FormControl, Button } from 'react-bootstrap';
+import { Container,Row,Col, FormControl, Button, ButtonToolbar } from 'react-bootstrap';
 import { TODO_LIST_ABI, TODO_LIST_ADDRESS } from './config';
 
 const Blockchain = () =>
@@ -29,8 +29,7 @@ const Blockchain = () =>
         
         for(var i = 0;i<=taskCount;i++){
             const task = await todoList.methods.tasks(i).call();
-            objectArray.push(task);
-            
+            objectArray.push(task);   
         }
         //console.log(objectArray);
        objectArray.map(obj => console.log(obj.content));
@@ -66,16 +65,18 @@ const Blockchain = () =>
                     <Col md="4"></Col>
                     <Col md="4">
                     <form onSubmit={createTask}>
+                        <ButtonToolbar>
                          <FormControl value={val} onChange={updateVal}></FormControl>
                          <Button color="Success" type="Submit">Create A Task</Button>
-                         </form>11
+                         </ButtonToolbar>
+                         </form>
                         </Col>
                     <Col md="4">
                     </Col>
                 </Row>
                 <Row>
                     <Col md="6">
-                        <ol>
+                        <ol><h4>Tasks to be accomplished</h4>
                         {blockData.map(obj => <li key={obj.content.toString()}>{ obj.content}</li>)}
                         </ol>
                     </Col>
