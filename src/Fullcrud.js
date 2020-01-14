@@ -14,15 +14,15 @@ const Fullcrud = () => {
         []
     );
 
-        const[norris,setNorris] = useState([])
+        const[norris,setNorris] = useState([]);
 
     const getData = async () => 
     {
-        const response = await Axios.get("http://api.icndb.com/jokes/random/12");
+        const response = await Axios.get("http://api.icndb.com/jokes/random/5");
         setNorris(response.data.value);
         // console.log(await norris)
     }
-   
+//    norris.map(nor => console.log(nor.categories));
     return(
         <div> 
             <Navigation></Navigation>
@@ -50,7 +50,7 @@ const Fullcrud = () => {
                 </Row>
                 <Row>
                     <Col md="12">
-                        
+                     
                     </Col>
                 </Row>
             </Container>

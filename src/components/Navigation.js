@@ -1,5 +1,5 @@
 import React from 'react';
-import { Navbar, Nav } from 'react-bootstrap';
+import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
 
 const Navigation = () => 
 {
@@ -11,12 +11,16 @@ const Navigation = () =>
                 <Nav className="mr-auto">
                     <Nav.Link href="/FoodApp">Food App</Nav.Link>
                     <Nav.Link href="/blockchain">Block-Chain</Nav.Link>
-                    <Nav.Link href="/fullcrud">Chuck Norris</Nav.Link>
-                    <Nav.Link href="/fullcrudRails">Full-CRUD(RAILS-API+MySql)</Nav.Link>
+                <NavDropdown title="Chuck Norris" id="basic-nav-dropdown">
+                <NavDropdown.Item href="/fullcrud">Home</NavDropdown.Item>
+                <NavDropdown.Divider></NavDropdown.Divider>
+                <NavDropdown.Item href="/fullcrud/jokecategory">Categories</NavDropdown.Item>
+                </NavDropdown>
+                <Nav.Link href="/fullcrudRails">Full-CRUD(RAILS-API+MySql)</Nav.Link>
                 </Nav>
-            
             </Navbar.Collapse>
         </Navbar>
+        
     );
 } 
 
