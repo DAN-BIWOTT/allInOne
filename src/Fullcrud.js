@@ -20,7 +20,7 @@ const Fullcrud = () => {
     {
         const response = await Axios.get("http://api.icndb.com/jokes/random/5");
         setNorris(response.data.value);
-        // console.log(await norris)
+         console.log(await norris)
     }
 //    norris.map(nor => console.log(nor.categories));
     return(

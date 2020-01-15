@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Navigation from './components/Navigation';
 import { Container, Row, Col } from 'react-bootstrap';
 import RailsNote from './components/fullcrudRails/RailsNote';
@@ -11,22 +11,22 @@ const FullcrudRails = () =>
         ()=>{showMeth()},
         []
     );
+
     const URL = "http://localhost:3002/api/v1/articles";
-   
-    const myth = [];
-    const myth2 = [];
+    
+    const[myth,setMyth] = useState([]);
+
     const showMeth = async () =>
     {   
 
         const response = await fetch(URL);
         const res = await response.json();
-        
-            myth.push(res.data)
-        //console.log(data.data[i].title);
-       
-        myth.map(temp => temp.map(temp2=> myth2.push(temp2)));
-       // myth2.map(mth=> console.log(mth.title));   
+        setMyth(res.data)
+       // console.log(res);
+
     }
+
+  
 
     return(
         <div>
@@ -43,20 +43,22 @@ const FullcrudRails = () =>
                 </Row>
                 <Row>
                     <Col md="12">
-                        <table className="table table-bordered table-striped">
+                        <table className="table table-bordered table-striped table-responsive-md text-center">
                             <thead >
                                 <tr>
                                     <td>Title</td>
                                     <td>Body</td>
+                                    <td></td>
                                 </tr>
                             </thead>
                             <tbody>
                                 {
-                            myth2.map( mth => <DisplayArticles
+                            myth.map( mth => <DisplayArticles
+                                    pkey = {mth.id}
                                     key = {mth.id}
                                     ptitle = {mth.title}
                                     pbody = {mth.body}
-                            ></DisplayArticles>)}        
+                            ></DisplayArticles>)}
                             </tbody>
                         </table>
                     </Col>

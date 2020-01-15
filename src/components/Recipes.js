@@ -17,7 +17,7 @@ const Title = styled.h1`
 text-decoration: underline;
 `;
 
-const Recipe = ({title,calories,img,source,ingredients}) => {
+const Recipe = ({key_,title,calories,img,source,ingredients}) => {
     return(
         <Custom_margin>
         <Container>
