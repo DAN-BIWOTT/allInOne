@@ -5,6 +5,7 @@ import SearchForm from './components/fullcrud/SearchForm';
 import FullcrudTable from './components/fullcrud/FullcrudTable';
 import TodayJoke from './components/fullcrud/TodayJoke';
 import Axios from 'axios';
+import NavStacked from './components/NavStacked';
 
 
 const Fullcrud = () => {
@@ -24,8 +25,8 @@ const Fullcrud = () => {
     }
 //    norris.map(nor => console.log(nor.categories));
     return(
-        <div> 
-            <Navigation></Navigation>
+        <div id="outer-container">
+            <NavStacked></NavStacked>
             <Container>
                 <Row className="justify-content-md-center">
                     <h3>CHUCK NORRIS JOKES</h3>

@@ -38,13 +38,16 @@ const JokeCategories = () =>
     let limitJoke = 12;
 
     const processCat = (choice) =>
-    {
+    {   
         getCat(choice);
-        // console.log(cat);
+        console.log(cat);
+        return false;
     }
     const[myJoke,setMyJoke] = useState([])
     const getCat = async (thechoice) => 
     {   
+        
+        //console.log(thechoice);
         const response = await fetch(`http://api.icndb.com/jokes/random/${limitJoke}`,{method: 'GET'});
         const result = await response.json();
         for(let i = 0; i < limitJoke; i++){
@@ -76,7 +79,7 @@ const JokeCategories = () =>
                         <SideA href="/"> <img src={home} alt="nerd" /></SideA>
                         </CustomMargin>
                         <CustomMargin>
-                        <SideA href=""> <img onClick = {processCat("nerd")} src={nerd} alt="nerd" /></SideA>
+                        <SideA href=""onClick = {processCat("nerd")}> <img  src={nerd} alt="nerd" /></SideA>
                         </CustomMargin>
                         <CustomMargin>
                         <SideA href="" ><img onClick = {processCat("explicit")} src={baby} alt="nerd" /></SideA>

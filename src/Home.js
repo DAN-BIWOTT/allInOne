@@ -1,12 +1,13 @@
 import React from 'react';
 import Navigation from './components/Navigation';
-import bg1 from './images/bg1.jpg';
+import BackgroundSection from './components/BackgroundSection';
 
 const Home = () => 
 {
     return(
-        <div  styles={{ backgroundImage:`url(${bg1})` }}>
-          <Navigation></Navigation>            
+        <div>
+          <Navigation></Navigation>
+          <BackgroundSection></BackgroundSection>
         </div>
         );
 }

@@ -1,8 +1,8 @@
 import React, { useEffect,useState } from 'react';
 import Recipe from './components/Recipes';
-import { Button,InputGroup,Row,FormControl} from 'react-bootstrap';
-import Navigation from './components/Navigation';
+import { Button,InputGroup,Row,FormControl,Col} from 'react-bootstrap';
 import styled from 'styled-components';
+import NavScaleRotate from './components/NavScaleRotate';
 
 const SearchSize = styled.div`
 margin-top: 10px;
@@ -46,11 +46,9 @@ const FoodApp = () =>
         setQuery(search);
     }
     return(
-        <div>
-             <Navigation>
-                
-                </Navigation>
-        <SearchSize>
+        <div id="outer-container">
+             <NavScaleRotate></NavScaleRotate>
+             
             <Row className="justify-content-md-center">
                 <form className="search-form" onSubmit={getSearch}>
                     <InputGroup size="lg">
@@ -62,8 +60,11 @@ const FoodApp = () =>
                     </InputGroup>
                 </form>
             </Row>
-        </SearchSize>
-            <div>
+            <Row>
+                <Col md="10">
+        <main id="page-wrap">
+            
+            
                 {
                     recipes.map(
                             singleRecipe => (
@@ -78,7 +79,10 @@ const FoodApp = () =>
                         )
                     )
                 }
-            </div>
+                </main>
+            </Col>
+            
+            </Row>
         </div>
     );
 }

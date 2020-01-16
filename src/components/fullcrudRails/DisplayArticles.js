@@ -97,12 +97,14 @@ const DisplayArticles = ({pkey,ptitle,pbody}) =>
                 </div>
             </Modal.Body>
             <Modal.Footer>
-            <Button variant="Success" type="submit">
+                <ButtonGroup>
+            <Button variant="success" type="submit">
                 Submit
             </Button>
             <Button variant="secondary" onClick={handleClose}>
                 Close
             </Button>
+            </ButtonGroup>
             </Modal.Footer>
             </form>
         </Modal>
