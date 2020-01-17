@@ -10,12 +10,13 @@ const DisplayArticles = ({pkey,ptitle,pbody}) =>
        
         await Axios.
         delete(
-            `http://localhost:3002/api/v1/articles/${val}`,
+            `https://philosopherapi.herokuapp.com/api/v1/articles/${val}`,
             {headers:{"Content-Type" : "Application/Json"}}
         )
         .catch(res => {
             console.log(res);
-        })
+        });
+        window.location.reload();
     }
 
     const [show, setShow] = useState(false);
@@ -25,7 +26,7 @@ const DisplayArticles = ({pkey,ptitle,pbody}) =>
 
     const handleOpen = async (e) => {
         
-        await Axios.get(`http://localhost:3002/api/v1/articles/${e.target.value}`,{headers:{"Content-Type":"Application/Json"}})
+        await Axios.get(`https://philosopherapi.herokuapp.com/api/v1/articles/${e.target.value}`,{headers:{"Content-Type":"Application/Json"}})
         .then(response => {
             setTitleVal(response.data.data.title);
             setBodyVal(response.data.data.body);
@@ -40,7 +41,7 @@ const DisplayArticles = ({pkey,ptitle,pbody}) =>
         setTitleVal(e.target.value);
     }
     const updateBody = (e) =>{
-        setTitleVal(e.target.value);
+        setBodyVal(e.target.value);
     }
     const setValues = (e) =>{
         e.preventDefault();
@@ -49,13 +50,14 @@ const DisplayArticles = ({pkey,ptitle,pbody}) =>
     const editMe  = async()=>{
        
         await Axios.
-        put(`http://localhost:3002/api/v1/articles/${id}`,
+        put(`https://philosopherapi.herokuapp.com/api/v1/articles/${id}`,
             { title: titleVal, body: bodyVal },
             {
             headers:{"Content-Type": "Application/Json"}
             })
             .then(response => {
                 console.log(response);
+                window.location.reload();
             })
     }
     return(
@@ -98,7 +100,7 @@ const DisplayArticles = ({pkey,ptitle,pbody}) =>
             </Modal.Body>
             <Modal.Footer>
                 <ButtonGroup>
-            <Button variant="success" type="submit">
+            <Button variant="success" onClick={handleClose} type="submit">
                 Submit
             </Button>
             <Button variant="secondary" onClick={handleClose}>
