@@ -23,7 +23,7 @@ const TodayJoke = () =>
     {
         const response = await Axios.get(`https://api.icndb.com/jokes/random`);
         setInfo({id: response.data.value.id, joke: response.data.value.joke});
-        const imageResponse = await fetch(URL, {method: "GET", headers: {'apikey': 'ed2b7b20-33ae-11ea-88fc-c559cf85b878'}}).then(console.log(response))
+        const imageResponse = await fetch(URL, {method: "GET", headers: {'apikey': 'ed2b7b20-33ae-11ea-88fc-c559cf85b878','Content-Type' : 'application/x-www-form-urlencoded; charset=UTF-8'}}).then(console.log(response))
         const image = await imageResponse.json();
         const val = Math.floor((Math.random() * 10) + 1);
         setTodaysImage(image.image_results[val].thumbnail);
