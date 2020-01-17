@@ -21,8 +21,6 @@ display: inline-block;
 const FullcrudTable = ({norrisJokes,norrisJokesids}) =>
 {   
 
-    const URL = `http://localhost:3000/fullcrud`;
-
     return(
         <div>
              <Table striped bordered hover>

@@ -18,7 +18,7 @@ const JokeCategories = () =>
 
     const getCat = async () => {
         // console.log(thechoice);
-        const response = await fetch(`http://api.icndb.com/jokes/random/${limitJoke}`,{method: 'GET'});
+        const response = await fetch(`https://api.icndb.com/jokes/random/${limitJoke}`,{method: 'GET'});
         const result = await response.json();
        
         for(let i = 0; i < limitJoke; i++){

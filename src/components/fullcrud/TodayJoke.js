@@ -21,7 +21,7 @@ const TodayJoke = () =>
     const URL = "https://app.zenserp.com/api/v2/search?q=chuck%20Norris&hl=en&gl=US&location=United%20States&search_engine=google.com&tbm=isch&num=1&start=0";
     const todaysJoke = async e =>
     {
-        const response = await Axios.get(`http://api.icndb.com/jokes/random`);
+        const response = await Axios.get(`https://api.icndb.com/jokes/random`);
         setInfo({id: response.data.value.id, joke: response.data.value.joke});
         const imageResponse = await fetch(URL, {method: "GET", headers: {'apikey': 'ed2b7b20-33ae-11ea-88fc-c559cf85b878'}}).then(console.log(response))
         const image = await imageResponse.json();
