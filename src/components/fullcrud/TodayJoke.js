@@ -23,10 +23,10 @@ const TodayJoke = () =>
     {
         const response = await Axios.get(`http://api.icndb.com/jokes/random`);
         setInfo({id: response.data.value.id, joke: response.data.value.joke});
-        // const imageResponse = await fetch(URL, {method: "GET", headers: {'apikey': 'ed2b7b20-33ae-11ea-88fc-c559cf85b878'}}).then(console.log(response))
-        // const image = await imageResponse.json();
-        // const val = Math.floor((Math.random() * 10) + 1);
-        // setTodaysImage(image.image_results[val].thumbnail);
+        const imageResponse = await fetch(URL, {method: "GET", headers: {'apikey': 'ed2b7b20-33ae-11ea-88fc-c559cf85b878'}}).then(console.log(response))
+        const image = await imageResponse.json();
+        const val = Math.floor((Math.random() * 10) + 1);
+        setTodaysImage(image.image_results[val].thumbnail);
     }
     
 
@@ -38,7 +38,7 @@ const TodayJoke = () =>
           <Modal.Title>Today's Joke</Modal.Title>
         </Modal.Header>
         <Modal.Body><p>{info.joke}</p>
-      {/* <Image src={todaysImage} thumbnail /> */}
+      <Image src={todaysImage} thumbnail />
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>

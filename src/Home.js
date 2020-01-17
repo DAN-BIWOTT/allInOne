@@ -1,12 +1,12 @@
 import React from 'react';
-import Navigation from './components/Navigation';
 import BackgroundSection from './components/BackgroundSection';
+import NavScaleDown from './components/NavScaleDown';
 
 const Home = () => 
 {
     return(
         <div>
-          <Navigation></Navigation>
+          <NavScaleDown></NavScaleDown>
           <BackgroundSection></BackgroundSection>
         </div>
         );

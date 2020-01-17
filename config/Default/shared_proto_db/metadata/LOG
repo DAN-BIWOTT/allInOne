@@ -1,1 +1,3 @@
-2020/01/16-14:47:17.402 913 Reusing MANIFEST /home/roman/Desktop/beta2/config/Default/shared_proto_db/metadata/MANIFEST-000001
+2020/01/17-08:38:55.649 4e9a Reusing MANIFEST /home/roman/Desktop/beta2/config/Default/shared_proto_db/metadata/MANIFEST-000001
+2020/01/17-08:38:55.661 4e9a Recovering log #3
+2020/01/17-08:38:55.662 4e9a Reusing old log /home/roman/Desktop/beta2/config/Default/shared_proto_db/metadata/000003.log 

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Navigation from './components/Navigation';
-import { Container, Row, Col, ButtonGroup,Button, Modal } from 'react-bootstrap';
+import { Container, Row, Col, ButtonGroup,Button, Modal,Navbar } from 'react-bootstrap';
 import DisplayArticles from './components/fullcrudRails/DisplayArticles';
 import styled from 'styled-components';
 import Axios from 'axios';
@@ -59,6 +59,9 @@ const FullcrudRails = () =>
     return(
         <div>
             <Navigation></Navigation>
+            <main id="page-wrap">
+            <Navbar bg="light" expand="lg">
+            </Navbar>
             <Container><CustomMargin></CustomMargin>
                      <Row>
                         <Col md="4"></Col>
@@ -119,6 +122,7 @@ const FullcrudRails = () =>
                     </Col>
                 </Row>
             </Container>
+            </main>
         </div>
     );
 }

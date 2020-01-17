@@ -1,6 +1,6 @@
 import React, { useEffect,useState } from 'react';
 import Web3 from 'web3';
-import Navigation from './components/Navigation';
+import NavScaleRotate from './components/NavScaleRotate';
 import { Container,Row,Col, FormControl, Button, ButtonToolbar } from 'react-bootstrap';
 import { TODO_LIST_ABI, TODO_LIST_ADDRESS } from './config';
 
@@ -55,7 +55,7 @@ const Blockchain = () =>
 
     return(
         <div>
-            <Navigation></Navigation>
+            <NavScaleRotate></NavScaleRotate>
             
             <Container>
                 <Row className="justify-content-center">

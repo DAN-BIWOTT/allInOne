@@ -21,7 +21,7 @@ display: block;
   }
 `;
 
-const Navigation = () => 
+const Navigation = () =>
 {   
 
     return(
