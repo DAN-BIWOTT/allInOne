@@ -1,56 +1,51 @@
 import React, { useEffect, useState } from 'react';
-import Navigation from './components/Navigation';
+import Navigation from '../components/Navigation';
 import { Container, Row, Col, ButtonGroup,Button, Modal,Navbar } from 'react-bootstrap';
-import DisplayArticles from './components/fullcrudRails/DisplayArticles';
-import styled from 'styled-components';
-import Axios from 'axios';
+import DisplayArticles from './components/DisplayArticles';
+import { CustomMargin } from './stylesheets/Mainstyle';
+import { getArticles, createArticle } from './controllers/MainController';
 
-const CustomMargin = styled.div`
-margin-top: 25px;
-`;
+
 
 const FullcrudRails = () =>
 {   
+    // DECLARATIONS
+    const[myth,setMyth] = useState([]);
+    const[newTitle,setNewTitle] = useState("");
+    const[newBody,setNewBody] = useState("");
+    const [show, setShow] = useState(false);
+    const handleClose = () => setShow(false);
+    const data = {
+        title: newTitle,
+        body: newBody
+    }
+    // const URL = "https://philosopherapi.herokuapp.com/api/v1/articles";
+    const URL = "http://localhost:3002/api/v1/articles";
+
+
+
+    // CONSTRUCTOR
     useEffect(
-        ()=>{showMeth()},
+        ()=>{showArticles()},
         []
     );
 
-    const URL = "  https://philosopherapi.herokuapp.com/api/v1/articles";
-    
-    const[myth,setMyth] = useState([]);
-
-    const showMeth = async () =>
-    {   
-
-        const response = await fetch(URL);
-        const res = await response.json();
-        setMyth(res.data)
-       // console.log(res);
-
+    // CRUD
+    const showArticles = async() => {
+        setMyth((await getArticles(URL)).data.data);
     }
 
-    const[newTitle,setNewTitle] = useState("");
-    const[newBody,setNewBody] = useState("");
+    const addArticle = () =>{
+        createArticle(URL,data);
+    }
 
+    // HELPERS
     const updateNewTitle = (e) => {
         setNewTitle(e.target.value);
     }
     const updateNewBody = (e) =>{
         setNewBody(e.target.value);
     }
-
-    const addEntry = async () =>{
-        await Axios.post(
-            URL,{
-                header: {"Content-Type":"Application/Json"}},
-                {data: {title: newTitle,body: newBody}
-            }
-        )
-    }
-
-    const [show, setShow] = useState(false);
-    const handleClose = () => setShow(false);
     const handleOpen = async (e) => {
         setShow(true);
     }
@@ -72,7 +67,7 @@ const FullcrudRails = () =>
                         <Modal.Header>
                             <Modal.Title>Add New Entry</Modal.Title>
                         </Modal.Header>
-                        <form onSubmit={addEntry}>
+                        <form onSubmit={addArticle}>
                         <Modal.Body>
                             <Container>
                                 <Row>

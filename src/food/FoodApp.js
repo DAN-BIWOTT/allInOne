@@ -2,7 +2,7 @@ import React, { useEffect,useState } from 'react';
 import Recipe from './components/Recipes';
 import { Button,InputGroup,Row,FormControl,Col} from 'react-bootstrap';
 import styled from 'styled-components';
-import NavScaleRotate from './components/NavScaleRotate';
+import NavScaleRotate from '../components/NavScaleRotate';
 
 const SearchSize = styled.div`
 margin-top: 10px;

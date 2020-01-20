@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { Col, Row, Navbar,Nav} from 'react-bootstrap';
-import '../../joke.css';
+import '../stylesheets/joke.css';
 
 
-const JokeSimple = () => 
+const JokeExplicit = () => 
 {   
     
     let limitJoke = 100;
@@ -51,7 +51,7 @@ const JokeSimple = () =>
                     <div className="num">{norris.id}</div>
                     <a className="card">
                     <div>
-                        <h1>Undefined Jokes</h1>
+                        <h1>Explicit Jokes</h1>
                         <p>{norris.joke}</p>
                         <div className="date">6 Oct 2017</div>
                         <div className="tags">
@@ -69,4 +69,4 @@ const JokeSimple = () =>
     )
 }
 
-export default JokeSimple; 
+export default JokeExplicit; 

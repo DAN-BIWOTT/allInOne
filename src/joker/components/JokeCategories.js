@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Table, Col, Row, Card, Navbar,Nav} from 'react-bootstrap';
 import styled from 'styled-components';
-import '../../joke.css';
+import '../stylesheets/joke.css';
 import Funny from '../../images/funny.jpg';
 
 

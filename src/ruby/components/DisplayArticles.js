@@ -1,65 +1,47 @@
 import React, { useState } from 'react';
 import { Button, ButtonGroup, Modal, Col,Row } from 'react-bootstrap';
-import Axios from 'axios';
+import { deleteArticle,showArticle,editArticle } from '../controllers/MainController';
 
 const DisplayArticles = ({pkey,ptitle,pbody}) =>
 {  
+    // DECLARATIONS
+    // const URL =  `https://philosopherapi.herokuapp.com/api/v1/articles/`;
+    const URL = "http://localhost:3002/api/v1/articles/";
+    const [show, setShow] = useState(false);
+    const handleClose = () => setShow(false);
+    const[titleVal,setTitleVal] = useState("");
+    const[bodyVal,setBodyVal] = useState("");
+    const data = {
+        title: titleVal,
+        body: bodyVal
+    }
+
+    // HELPERS
+    const updateTitle = (e) =>{setTitleVal(e.target.value);}
+    const updateBody = (e) =>{setBodyVal(e.target.value);}
+    const setValues = (e) =>{e.preventDefault();editMe();}
+
+    // CRUD
     const deleteMe = async e =>{
-        e.preventDefault();
-        let val = parseInt(e.target.value);
-       
-        await Axios.
-        delete(
-            `https://philosopherapi.herokuapp.com/api/v1/articles/${val}`,
-            {headers:{"Content-Type" : "Application/Json"}}
-        )
-        .catch(res => {
-            console.log(res);
-        });
+        let myURL = URL.concat(pkey);
+        deleteArticle(myURL);
+        window.location.reload();
+    }
+    const onShowArticle = async () => {
+        let myURL = URL.concat(pkey);
+        const response = await showArticle(myURL);
+        setTitleVal(response.data.data.title);
+        setBodyVal(response.data.data.body);
+      
+        setShow(true);
+    }
+    const editMe  = async(e)=>{
+        let myURL = URL.concat(pkey);
+        editArticle(myURL,data);
         window.location.reload();
     }
 
-    const [show, setShow] = useState(false);
-    const handleClose = () => setShow(false);
-
-    const id = pkey;
-
-    const handleOpen = async (e) => {
-        
-        await Axios.get(`https://philosopherapi.herokuapp.com/api/v1/articles/${e.target.value}`,{headers:{"Content-Type":"Application/Json"}})
-        .then(response => {
-            setTitleVal(response.data.data.title);
-            setBodyVal(response.data.data.body);
-        });
-        setShow(true);
-    }
-    //  EDIT
-    const[titleVal,setTitleVal] = useState("");
-    const[bodyVal,setBodyVal] = useState("");
-
-    const updateTitle = (e) =>{
-        setTitleVal(e.target.value);
-    }
-    const updateBody = (e) =>{
-        setBodyVal(e.target.value);
-    }
-    const setValues = (e) =>{
-        e.preventDefault();
-        editMe();
-    }
-    const editMe  = async()=>{
-       
-        await Axios.
-        put(`https://philosopherapi.herokuapp.com/api/v1/articles/${id}`,
-            { title: titleVal, body: bodyVal },
-            {
-            headers:{"Content-Type": "Application/Json"}
-            })
-            .then(response => {
-                console.log(response);
-                window.location.reload();
-            })
-    }
+  
     return(
         <>
             <tr>
@@ -67,8 +49,8 @@ const DisplayArticles = ({pkey,ptitle,pbody}) =>
                 <td>{pbody}</td>
                 <td>
                     <ButtonGroup>
-                        <Button value={pkey} onClick={deleteMe} size="md" className="bg-danger">Delete</Button>
-                        <Button value={pkey} onClick={handleOpen} size="md" className="bg-primary">Edit</Button>
+                        <Button onClick={deleteMe} size="md" className="bg-danger">Delete</Button>
+                        <Button onClick={onShowArticle} size="md" className="bg-primary">Edit</Button>
                     </ButtonGroup>
                     
                 </td>

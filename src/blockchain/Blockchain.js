@@ -1,8 +1,8 @@
 import React, { useEffect,useState } from 'react';
 import Web3 from 'web3';
-import NavScaleRotate from './components/NavScaleRotate';
+import NavScaleRotate from '../components/NavScaleRotate';
 import { Container,Row,Col, FormControl, Button, ButtonToolbar } from 'react-bootstrap';
-import { TODO_LIST_ABI, TODO_LIST_ADDRESS } from './config';
+import { TODO_LIST_ABI, TODO_LIST_ADDRESS } from './config/config';
 
 const Blockchain = () =>
 {

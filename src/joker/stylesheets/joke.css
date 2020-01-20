@@ -34,7 +34,7 @@ a {
 .card {
   font-family: 'Heebo';
   --bg-filter-opacity: 0.5;
-  background-image: url('images/00014.jpg');
+  background-image: url('../../images/00014.jpg');
   /* background-image: linear-gradient(rgba(0,0,0,var(--bg-filter-opacity)),rgba(0,0,0,var(--bg-filter-opacity))), var(--bg-img); */
   height: 20em;
   width: 15em;
@@ -123,7 +123,7 @@ a {
 }
 
 .card:after {
-  background-image: url('images/funny.jpg');
+  background-image: url('../../images/funny.jpg');
   width: 200%;
   height: 200%;
 }

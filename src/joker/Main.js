@@ -1,28 +1,25 @@
 import React, { useEffect, useState } from 'react';
-import Navigation from './components/Navigation';
 import { Container, Row, Col } from 'react-bootstrap';
-import SearchForm from './components/fullcrud/SearchForm';
-import FullcrudTable from './components/fullcrud/FullcrudTable';
-import TodayJoke from './components/fullcrud/TodayJoke';
-import Axios from 'axios';
-import NavStacked from './components/NavStacked';
+import SearchForm from './components/SearchForm';
+import FullcrudTable from './components/FullcrudTable';
+import TodayJoke from './components/TodayJoke';
+import NavStacked from '../components/NavStacked';
+import { getJokes } from './controllers/MainController';
 
 
 const Fullcrud = () => {
-
+const[norris,setNorris] = useState([]);
     useEffect(
-        ()=>{getData()},
+        ()=>{ setNorris(getJokes(5).data.value)},
         []
     );
 
-        const[norris,setNorris] = useState([]);
-
-    const getData = async () => 
-    {
-        const response = await Axios.get("https://api.icndb.com/jokes/random/5");
-        setNorris(response.data.value);
-         console.log(await norris)
-    }
+ 
+    // const getData = async () => 
+    // {
+    //     const response = await Axios.get("https://api.icndb.com/jokes/random/5");
+    //     setNorris(response.data.value);
+    // }
 //    norris.map(nor => console.log(nor.categories));
     return(
         <div id="outer-container">

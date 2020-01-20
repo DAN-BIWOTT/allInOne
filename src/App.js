@@ -6,14 +6,14 @@ import {
 } from "react-router-dom";
 
 import Home from './Home';
-import FoodApp from './FoodApp';
-import Blockchain from './Blockchain';
+import FoodApp from './food/FoodApp';
+import Blockchain from './blockchain/Blockchain';
 import NoMatch from './NoMatch';
-import Fullcrud from './Fullcrud';
-import FullcrudRails from './FullcrudRails';
-import JokeCategories from './components/fullcrud/JokeCategories';
-import JokeExplicit from './components/fullcrud/JokeExplicit';
-import JokeSimple from './components/fullcrud/JokeSimple';
+import Fullcrud from './joker/Main';
+import FullcrudRails from './ruby/Main';
+import JokeCategories from './joker/components/JokeCategories';
+import JokeExplicit from './joker/components/JokeExplicit';
+import JokeSimple from './joker/components/JokeSimple';
 
 const App = () => 
 {
