@@ -19,8 +19,8 @@ const FullcrudRails = () =>
         title: newTitle,
         body: newBody
     }
-    // const URL = "https://philosopherapi.herokuapp.com/api/v1/articles";
-    const URL = "http://localhost:3002/api/v1/articles";
+     const URL = "https://philosopherapi.herokuapp.com/api/v1/articles";
+    //const URL = "http://localhost:3002/api/v1/articles";
 
 
 

@@ -5,8 +5,8 @@ import { deleteArticle,showArticle,editArticle } from '../controllers/MainContro
 const DisplayArticles = ({pkey,ptitle,pbody}) =>
 {  
     // DECLARATIONS
-    // const URL =  `https://philosopherapi.herokuapp.com/api/v1/articles/`;
-    const URL = "http://localhost:3002/api/v1/articles/";
+    const URL =  `https://philosopherapi.herokuapp.com/api/v1/articles/`;
+    // const URL = "http://localhost:3002/api/v1/articles/";
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const[titleVal,setTitleVal] = useState("");
