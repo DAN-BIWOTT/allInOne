@@ -10,7 +10,7 @@ import FoodApp from './food/FoodApp';
 import Blockchain from './blockchain/Blockchain';
 import NoMatch from './NoMatch';
 import Fullcrud from './joker/Main';
-import FullcrudRails from './ruby/Main';
+import FullcrudRails from './apiconsumer/Main';
 import JokeCategories from './joker/components/JokeCategories';
 import JokeExplicit from './joker/components/JokeExplicit';
 import JokeSimple from './joker/components/JokeSimple';

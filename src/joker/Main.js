@@ -13,8 +13,6 @@ const[norris,setNorris] = useState([]);
         ()=>{ setNorris(getJokes(5).data.value)},
         []
     );
-
- 
     // const getData = async () => 
     // {
     //     const response = await Axios.get("https://api.icndb.com/jokes/random/5");

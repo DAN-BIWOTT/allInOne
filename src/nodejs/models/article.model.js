@@ -5,6 +5,7 @@ const Articles = function(articles){
     this.body = articles.body
     this.id = articles.id
 }
+
 // CREATE
 Articles.create = (newArticle, result) => {
     sql.query("INSERT INTO article SET ?",newArticle,(err,res)=>{
@@ -17,6 +18,7 @@ Articles.create = (newArticle, result) => {
         result(null,{id: res.insertId,...newArticle});
     })
 }
+
 // FIND BY ID
 Articles.findById = (articleId, result) => {
     sql.query(`SELECT * FROM article WHERE id = ${articleId}`,(err,res)=>{
@@ -27,27 +29,29 @@ Articles.findById = (articleId, result) => {
             console.log("found article: ",res[0]);
             result(null,res[0]);
             return;
-        }
+        } 
 
         result({kind: "not_found"},null);
     });
 }
+
 // RETRIEVE EVERYTHING
 Articles.getAll = (result) => {
     sql.query("SELECT * FROM article",(err,res)=>{
-       
         if(err){
             result(err,null);
         }else{
             result(null,res);
         }
     });
+
 }
+
 // UPDATE BY ID
 Articles.updateById =(id,article,result) => {
     sql.query(
-        "UPDATE article SET title = ?, body = ?, id = ?",
-        [article.title,article.body,article.id],
+        "UPDATE article SET title = ?, body = ? WHERE id = ?",
+        [article.title,article.body,id],
         (err,res) => {
             if(err){
                 console.log(err);
@@ -63,6 +67,7 @@ Articles.updateById =(id,article,result) => {
         }
     )
 }
+
 // DELETE BY ID
 Articles.remove = (id, result) => {
     sql.query(`DELETE FROM article WHERE id = ${id}`,(err,res) => {

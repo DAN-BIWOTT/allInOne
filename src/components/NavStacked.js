@@ -31,7 +31,7 @@ const NavStacked= () =>
         <SideA as="a" id="about" className="bm-item menu-item" href="/FoodApp">Food App</SideA>
         <SideA as="a" id="contact" className="menu-item" href="/blockchain">BlockChain</SideA>
          <SideA as="a" className="menu-item" href="/fullcrud/jokecategory">Category</SideA>
-        <SideA as="a" className="menu-item" href="/fullcrudRails">Rails</SideA>
+        <SideA as="a" className="menu-item" href="/fullcrudRails">fullcrudNodejs</SideA>
         </Menu>
         </div>
     );
