@@ -46,7 +46,6 @@ const Main = () =>
     const handleOpen = async (e) => {
         setShow(true);
     }
-  
     return(
         <div>
             <Navigation></Navigation>
@@ -105,8 +104,8 @@ const Main = () =>
                             myth.map( mth => <DisplayArticles
                                     pkey = {mth.id}
                                     key = {mth.id}
-                                    ptitle = {mth.TITLE}
-                                    pbody = {mth.BODY}
+                                    ptitle = {mth.title}
+                                    pbody = {mth.body}
                             ></DisplayArticles>)}
                             </tbody>
                         </table>
